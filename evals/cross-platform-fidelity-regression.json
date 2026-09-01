@@ -25,7 +25,8 @@
     ],
     "composition": [
       "Preserve subject scale, crop, pose or orientation, negative space, and depth order.",
-      "Do not standardize an informal, asymmetric, close, distant, or otherwise source-defining composition."
+      "Do not standardize an informal, asymmetric, close, distant, or otherwise source-defining composition.",
+      "Keep exact source dimensions separate from the normalized generation ratio; preserve the same normalized canvas fact in every platform adapter."
     ],
     "light_and_color": [
       "Preserve light direction, value structure, color temperature, and visible reflections.",
@@ -38,9 +39,9 @@
     ]
   },
   "platform_expectations": {
-    "gpt": "Use complete relationship-aware instructions with constraints beside affected objects.",
-    "grok": "Use compact instructions without collapsing required structural zones or depth layers.",
-    "midjourney": "Front-load composition and P0 geometry, then source-defining color and material, using only conservative supported parameters."
+    "gpt": "Use complete relationship-aware instructions with constraints beside affected objects, beginning with normalized canvas ratio and reliable source-size reference.",
+    "grok": "Use compact instructions without collapsing required structural zones or depth layers, beginning with a compact canvas and source-size clause.",
+    "midjourney": "Front-load composition and P0 geometry, then source-defining color and material, using only conservative supported parameters and a normalized compact --ar."
   },
   "pass_criteria": [
     "All requested platform-language variants retain every applicable high-drift invariant from one shared visual fact source.",

@@ -5,7 +5,7 @@
   "applicability": "Resolve the same platform-neutral visual facts for every supported image type before applying a target adapter.",
   "canonical_visual_spec_contract": {
     "required_fields_when_applicable": [
-      "canvas, crop, and subject scale",
+      "exact source dimensions, normalized generation ratio, crop, and subject scale",
       "subjects and identity-defining geometry",
       "relative position, direction, contact, containment, and occlusion",
       "ordered depth layers",
@@ -30,11 +30,13 @@
   ],
   "adapter_expectations": {
     "gpt": [
+      "Start with output orientation, normalized generation ratio, and reliable source dimensions as a size reference.",
       "Use complete natural-language instructions and explicit spatial, structural, color, and occlusion relationships.",
       "Keep critical constraints beside the affected object or region.",
       "Apply compensation only when the current source or comparison evidence supports the observed drift."
     ],
     "grok": [
+      "Start with a compact canvas clause containing output orientation, normalized generation ratio, and reliable source dimensions as a size reference.",
       "Use compact direct instructions while retaining all required structural zones and depth layers.",
       "Restate P0 relationships without inventing platform parameters.",
       "Keep distinct regions separate when simplification would merge geometry, material, or color."
@@ -42,13 +44,14 @@
     "midjourney": [
       "Front-load framing, complete silhouette, subject scale, crop, and P0 geometry before high-salience local detail.",
       "Describe local details through their role, location, attachment, and occlusion so they remain subordinate to the whole.",
-      "Append only source-derived aspect ratio, conservative style control, and directly relevant negative constraints unless the user requests more."
+      "Append only a normalized compact aspect ratio, conservative style control, and directly relevant negative constraints unless the user requests more; never pass pixel-style dimensions as --ar."
     ]
   },
   "pass_criteria": [
     "All platform prompts preserve every P0 identity fact and all applicable P1 facts from the current image.",
     "The three adapters differ materially in instruction structure without changing shared facts.",
     "No adapter promotes P2 detail above P0 composition or geometry.",
+    "GPT and Grok carry the same normalized canvas ratio and reliable source-size reference, while Midjourney uses only the normalized compact ratio in --ar.",
     "No model, version, seed, or hidden generation parameter is inferred from the source.",
     "No adapter or regression rule contains a private-image-specific scene, object, palette, garment, or composition."
   ]

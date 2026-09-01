@@ -1,0 +1,67 @@
+{
+  "feature": "canvas-dimension-and-normalized-aspect-ratio",
+  "date": "2026-09-01",
+  "validation_type": "skill-contract-algorithm-and-package-regression",
+  "baseline": "evals/canvas-aspect-ratio-baseline.json",
+  "regression_spec": "evals/canvas-aspect-ratio-regression.json",
+  "checks": {
+    "exact_source_dimensions_preserved": true,
+    "source_dimensions_separate_from_generation_ratio": true,
+    "gpt_canvas_clause_required": true,
+    "gpt_source_size_reference_required": true,
+    "grok_canvas_clause_required": true,
+    "grok_source_size_reference_required": true,
+    "midjourney_ar_is_not_pixel_dimensions": true,
+    "common_ratio_snap_max_error_0_25_percent": true,
+    "two_digit_compact_ratio_fallback": true,
+    "exact_ratio_fallback_when_compact_error_is_too_large": true,
+    "same_canvas_facts_across_adapters": true,
+    "platform_specific_prompt_compilation_preserved": true,
+    "all_eval_json_valid": true,
+    "skill_quick_validation": true,
+    "package_contents_valid": true,
+    "packaged_source_hashes_match": true
+  },
+  "algorithm_cases": [
+    {
+      "source": "1920x1080",
+      "actual": "16:9",
+      "expected": "16:9",
+      "pass": true
+    },
+    {
+      "source": "2560x1080",
+      "actual": "64:27",
+      "expected": "64:27",
+      "pass": true
+    },
+    {
+      "source": "1080x1920",
+      "actual": "9:16",
+      "expected": "9:16",
+      "pass": true
+    },
+    {
+      "source": "405x793",
+      "actual": "24:47",
+      "expected": "24:47",
+      "relative_error_percent": 0.01576,
+      "pass": true
+    },
+    {
+      "source": "406x900",
+      "actual": "9:20",
+      "expected": "9:20",
+      "pass": true
+    },
+    {
+      "source": "1000x1410",
+      "actual": "61:86",
+      "expected": "61:86",
+      "relative_error_percent": 0.01163,
+      "pass": true
+    }
+  ],
+  "package_sha256": "4B97879F0783A16A9F1BF60370A8D5F4C008A62CD235C722E010165EB393B9C6",
+  "status": "PASS"
+}

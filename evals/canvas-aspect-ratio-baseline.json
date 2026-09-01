@@ -1,0 +1,16 @@
+{
+  "feature": "canvas-dimension-and-normalized-aspect-ratio",
+  "date": "2026-09-01",
+  "validation_type": "pre-change-skill-contract-audit",
+  "observed": {
+    "source_dimensions_preserved_in_metadata": true,
+    "normalized_generation_ratio_defined": false,
+    "common_ratio_snap_defined": false,
+    "compact_ratio_fallback_defined": false,
+    "gpt_prompt_requires_canvas_dimensions": false,
+    "grok_prompt_requires_canvas_dimensions": false,
+    "midjourney_rejects_pixel_style_ar": false
+  },
+  "failure_summary": "当前规则只在元数据保存原始尺寸，GPT/Grok 模板未强制携带画布尺寸；Midjourney 直接使用原图像素约分，可能产生 405:793 一类像素式长比例。",
+  "status": "FAIL"
+}

@@ -7,6 +7,8 @@
     "structure_profile": true,
     "visibility_profile": true,
     "composition_profile": true,
+    "source_dimensions_separate_from_generation_ratio": true,
+    "cross_platform_canvas_fidelity": true,
     "light_color_profile": true,
     "per_region_saturation_profile": true,
     "local_chroma_vs_global_cast": true,

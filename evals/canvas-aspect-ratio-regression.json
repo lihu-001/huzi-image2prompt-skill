@@ -1,0 +1,71 @@
+{
+  "name": "canvas-dimension-and-normalized-aspect-ratio",
+  "date": "2026-09-01",
+  "task": "reference-reconstruction",
+  "normalization_policy": {
+    "source_dimensions": "Preserve reliable source width and height exactly as metadata; never relabel them as an aspect-ratio parameter.",
+    "ratio_basis": "Compute the source ratio as width divided by height.",
+    "common_ratios": [
+      "1:1",
+      "5:4",
+      "4:5",
+      "4:3",
+      "3:4",
+      "3:2",
+      "2:3",
+      "16:10",
+      "10:16",
+      "16:9",
+      "9:16",
+      "2:1",
+      "1:2",
+      "20:9",
+      "9:20",
+      "21:9",
+      "9:21"
+    ],
+    "common_ratio_snap": "Use the nearest common ratio only when its relative ratio error is no more than 0.25%; do not distort the source canvas to obtain a familiar ratio.",
+    "compact_fallback": "Otherwise use the exact reduced ratio when both terms are no greater than 99. If either term has three digits, choose the closest coprime ratio bounded to 1..99 only when its relative error is no more than 0.25%; otherwise retain the exact reduced ratio because fidelity outranks brevity.",
+    "missing_dimensions": "Do not invent pixels. Use only a visually supported orientation and conservative ratio; omit an unsupported ratio parameter."
+  },
+  "examples": [
+    {
+      "source": "1920x1080",
+      "generation_ratio": "16:9"
+    },
+    {
+      "source": "2560x1080",
+      "generation_ratio": "64:27",
+      "note": "Often marketed as 21:9, but 64:27 preserves the exact source canvas."
+    },
+    {
+      "source": "1080x1920",
+      "generation_ratio": "9:16"
+    },
+    {
+      "source": "405x793",
+      "generation_ratio": "24:47"
+    },
+    {
+      "source": "406x900",
+      "generation_ratio": "9:20"
+    },
+    {
+      "source": "1000x1410",
+      "generation_ratio": "61:86"
+    }
+  ],
+  "platform_contract": {
+    "gpt": "Begin with output orientation and normalized generation ratio, and include reliable source pixel dimensions as a size reference.",
+    "grok": "Begin with a compact canvas clause containing orientation, normalized generation ratio, and reliable source pixel dimensions as a size reference.",
+    "midjourney": "Use the fidelity-preserving normalized generation ratio in --ar; avoid raw pixel dimensions when an accurate two-digit ratio exists.",
+    "shared_facts": "All adapters compile the same canvas facts but may express them differently."
+  },
+  "pass_criteria": [
+    "Metadata distinguishes exact source dimensions from normalized generation ratio.",
+    "GPT and Grok prompts both contain orientation, normalized ratio, and reliable source dimensions.",
+    "Midjourney emits exact common ratios or fidelity-preserving compact ratios such as 16:9, 64:27, 24:47, or 9:20 rather than mechanically using pixel-style ratios such as 405:793.",
+    "Ratio normalization is generic and contains no scene-specific, object-specific, or private-image-specific rule.",
+    "The six-block output contract and platform-specific adapters remain intact."
+  ]
+}
