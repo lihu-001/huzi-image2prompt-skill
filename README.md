@@ -16,6 +16,8 @@
 - 覆盖写实照片、插画、海报和含文字图片
 - 提取主体、构图、环境、风格、光线、色彩、材质微结构、遮挡关系、服装/物体结构、镜头观感与宽高比
 - 先建立厂商无关的 Canonical Visual Spec，显式记录对象关系、前后层级和 `P0 identity / P1 similarity / P2 flexible` 复现优先级
+- 按骨架与轴线、比例与锚点、负形与遮挡、三值明暗、空间尺度、材质纹理的顺序建立 Reconstruction Spec；结构未通过时触发纹理门禁
+- 对生成结果采用结构优先评分：骨架和比例占 55%，材质纹理仅占 5%；任何身份关键 P0 冲突都会直接判定结构失败
 - 按“平台 / 可选模型 / 可选版本 / 任务类型”选择 Prompt adapter；未指定模型或版本时使用保守平台档案，不从图片猜测生成参数
 - 默认将 GPT、Grok、Midjourney 三个平台的中英文版本写入 Markdown 文件，共六个独立代码块；不再输出容易被误用于 Midjourney 的通用/自然语言 Prompt
 - 每个代码块包含完整正向描述和反义提示，一次复制、一次粘贴即可出图
@@ -73,13 +75,13 @@ Markdown 文件包含图片来源、尺寸、宽高比、通过 `![原图](<asse
 5. Midjourney Prompt（中文）
 6. Midjourney Prompt (English)
 
-内部先建立厂商无关的 Canonical Visual Spec，记录画布、主体、几何分区、空间和遮挡关系、前后景、光色、材质、文字，以及 P0/P1/P2 复现优先级；它不会作为“原版”“通用”或“自然语言”Prompt 输出。随后由三个平台 adapter 分别编译：GPT 使用完整关系句，Grok 使用紧凑的结构分区指令，Midjourney 把完整取景和 P0 几何放在高显著局部细节之前，并在末尾附加：
+内部先建立厂商无关的 Canonical Visual Spec，记录画布、主体、几何分区、空间和遮挡关系、前后景、光色、材质、文字，以及 P0/P1/P2 复现优先级。随后以 Reconstruction Spec 锁定骨架、比例、负形、三值明暗和空间层级，最后才放行纹理；这些内部表示不会作为“原版”“通用”或“自然语言”Prompt 输出。最后由三个平台 adapter 分别编译：GPT 使用完整关系句，Grok 使用紧凑的结构分区指令，Midjourney 把完整取景和 P0 几何放在高显著局部细节之前，并在末尾附加：
 
 ```text
 --ar [宽:高] --style raw --no [反义提示]
 ```
 
-不会单独输出 Negative Prompt 或“不确定项”。生成前会建立材质、结构、可见性、构图和光色五类高漂移画像，并要求所有平台版本保持一致；模型偏差只在 adapter 中基于用户对比或回归证据进行场景相关补偿。若图片存在会显著改变结果、且用户能够判断的关键歧义，技能会先询问一个确认问题。多张图片默认分别生成 Markdown 文件。
+不会单独输出 Negative Prompt 或“不确定项”。生成前会建立骨架比例、负形遮挡、材质、结构、可见性、构图空间、明暗色彩七类高漂移画像，并要求所有平台版本保持一致；模型偏差只在 adapter 中基于用户对比或回归证据进行场景相关补偿。用户提供生成结果时，每轮只修正一到两个最高权重误差并锁定已正确 P0；除非用户明确要求生成，否则不会自动出图，自动纠偏最多三轮。若图片存在会显著改变结果、且用户能够判断的关键歧义，技能会先询问一个确认问题。多张图片默认分别生成 Markdown 文件。
 
 ## 项目结构
 
@@ -88,11 +90,13 @@ huzi-image2prompt/       可安装、可打包的技能目录
   SKILL.md               技能定义与工作流
   LICENSE                随技能分发的 MIT 许可证
   references/
+    reconstruction-method.md  结构测量、负形、明暗、空间、纹理门禁与评分规则
     model-adapters.md     Canonical Visual Spec、目标档案和三平台 adapter 规则
 evals/evals.json         成功输出、不可访问路径、关键歧义、续答和重复生成行为用例
 evals/cross-platform-fidelity-regression.json  跨平台材质、结构、遮挡和构图回归规范
 evals/embedded-image-timestamp-regression.json  原图嵌入、时间戳和重复生成回归规范
 evals/model-adapter-regression.json  模型感知中间表示、优先级和平台偏差补偿回归规范
+evals/reconstruction-hierarchy-regression.json  骨架优先重建、纹理门禁与纠偏回归规范
 evals/fixtures/          固定评估图片
 docs/plans/              实施计划
 dist/                    打包产物

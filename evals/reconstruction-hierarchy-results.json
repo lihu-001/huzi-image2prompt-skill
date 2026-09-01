@@ -1,0 +1,28 @@
+{
+  "feature": "structure-first-reconstruction-hierarchy",
+  "date": "2026-09-01",
+  "validation_type": "skill-contract-and-package-regression",
+  "baseline": "evals/reconstruction-hierarchy-baseline.json",
+  "regression_spec": "evals/reconstruction-hierarchy-regression.json",
+  "checks": {
+    "reconstruction_runs_before_adapter": true,
+    "approximate_normalized_measurement": true,
+    "skeleton_and_axis_stage": true,
+    "landmark_and_pairwise_proportion_stage": true,
+    "negative_space_and_occlusion_stage": true,
+    "three_value_tonal_volume_stage": true,
+    "ordered_depth_and_scale_layers": true,
+    "texture_last_gate": true,
+    "weighted_structure_first_evaluation": true,
+    "P0_hard_failure_gate": true,
+    "bounded_three_round_correction_loop": true,
+    "model_adapters_preserved": true,
+    "legacy_six_block_output_preserved": true,
+    "all_eval_json_valid": true,
+    "skill_quick_validation": true,
+    "packaged_references_present": true,
+    "packaged_source_hashes_match": true
+  },
+  "personal_images_copied_to_repository": false,
+  "status": "PASS"
+}
