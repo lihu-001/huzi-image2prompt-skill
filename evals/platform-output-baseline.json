@@ -1,0 +1,21 @@
+{
+  "fixture": "evals/fixtures/moon-cat-poster.png",
+  "current_output_code_blocks": 2,
+  "current_categories": ["自然语言中文"],
+  "missing_categories": [
+    "自然语言英文",
+    "GPT 中文",
+    "GPT 英文",
+    "Grok 中文",
+    "Grok 英文",
+    "Midjourney 中文",
+    "Midjourney 英文"
+  ],
+  "gpt_grok_negative_embedded": false,
+  "midjourney_has_ar": false,
+  "midjourney_has_style_raw": false,
+  "midjourney_has_no": false,
+  "has_separate_negative_prompt": true,
+  "has_uncertainty_section": true,
+  "failure_summary": "当前技能只输出一个中文通用 Prompt、一个独立 Negative Prompt 和不确定项，不满足八个一次粘贴即可出图的平台代码块契约。"
+}
