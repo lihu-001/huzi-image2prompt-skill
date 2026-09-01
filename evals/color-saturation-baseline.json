@@ -1,0 +1,17 @@
+{
+  "feature": "source-relative-color-saturation-fidelity",
+  "date": "2026-09-01",
+  "validation_type": "pre-change-general-contract-audit",
+  "failure_class": "A reconstruction prompt can preserve broad hue labels while omitting relative saturation, causing palette-defining regions to become too muted or too vivid across any image type.",
+  "checks": {
+    "per_region_hue_value_saturation_profile": false,
+    "relative_saturation_ranking": false,
+    "local_chroma_anchors": false,
+    "local_saturation_separated_from_global_cast": false,
+    "positive_source_relative_saturation_language": false,
+    "evidence_scoped_saturation_compensation": false,
+    "cross_platform_saturation_validation": false,
+    "color_fidelity_gate": false
+  },
+  "status": "FAIL"
+}

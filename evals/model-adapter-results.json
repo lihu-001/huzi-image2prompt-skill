@@ -16,12 +16,14 @@
     "midjourney_composition_first_adapter": true,
     "shared_invariant_validation": true,
     "platform_adapter_validation": true,
+    "per_region_hue_value_saturation_profile": true,
+    "evidence_scoped_saturation_compensation": true,
+    "local_chroma_vs_global_cast": true,
     "legacy_six_block_output_preserved": true,
     "all_eval_json_valid": true,
     "skill_quick_validation": true,
     "packaged_reference_present": true,
     "packaged_source_hashes_match": true
   },
-  "personal_images_copied_to_repository": false,
   "status": "PASS"
 }

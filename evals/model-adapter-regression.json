@@ -1,74 +1,55 @@
 {
   "name": "model-aware-reference-reconstruction",
   "date": "2026-09-01",
-  "privacy": "The user-provided comparison images are not copied into the repository; this file records only generalized visual invariants and observed drift patterns.",
   "task": "reference-reconstruction",
-  "canonical_visual_spec": {
-    "canvas": "vertical distant establishing shot",
-    "primary_subject": "a split triangular ancient-futurist megastructure shown completely from apex to base",
-    "geometry_and_relations": [
-      "near-black left wing and rust-red illuminated right wing remain visibly asymmetric",
-      "a thin vertical light slit connects the apex to the lower entrance",
-      "a large circular calendar relief is embedded in the upper-middle facade and partially occluded by diagonal beams",
-      "a pale horizontal relief base separates the monument from the stepped temple below"
+  "applicability": "Resolve the same platform-neutral visual facts for every supported image type before applying a target adapter.",
+  "canonical_visual_spec_contract": {
+    "required_fields_when_applicable": [
+      "canvas, crop, and subject scale",
+      "subjects and identity-defining geometry",
+      "relative position, direction, contact, containment, and occlusion",
+      "ordered depth layers",
+      "lighting, value structure, and per-region color relationships",
+      "visible material and surface properties",
+      "legible text and graphic hierarchy",
+      "directly conflicting outcomes to avoid"
     ],
-    "depth_layers": [
-      "sky",
-      "megastructure",
-      "relief base and stepped temple",
-      "dusty settlement",
-      "river",
-      "dry grassland and tiny red-robed observer"
-    ],
-    "priorities": {
-      "P0_identity": [
-        "complete distant silhouette",
-        "split-wing geometry",
-        "left-dark right-warm asymmetry",
-        "central light slit",
-        "partially occluded calendar relief"
-      ],
-      "P1_similarity": [
-        "pale relief base",
-        "layered temple, settlement, river, and tiny observer",
-        "restrained blue-gray and copper palette"
-      ],
-      "P2_flexible": [
-        "exact glyph shapes",
-        "building count",
-        "bird positions"
-      ]
-    }
+    "priority_model": {
+      "P0_identity": "Facts whose change breaks subject identity or the visual skeleton.",
+      "P1_similarity": "Facts whose change materially reduces similarity.",
+      "P2_flexible": "Facts that may vary without compromising the reconstruction."
+    },
+    "evidence_boundary": "Record visible facts and conservative inferences only; do not infer original model settings, hidden parameters, or creator intent."
   },
   "required_architecture": [
-    "The visual fact source is platform-neutral and contains geometry, relative scale, position, occlusion, depth order, lighting, palette, and P0/P1/P2 priorities.",
-    "Prompt compilation resolves a profile by platform, optional model, optional version, and task type; unknown model details use a conservative platform default and are never inferred from the image.",
-    "Platform adapters may change ordering, redundancy, syntax, and supported parameters, but may not change canonical visual facts.",
-    "Observed platform drift is handled as adapter-level bias correction rather than being written into the canonical visual spec.",
+    "The visual fact source is platform-neutral and complete for the current image rather than a fixed scene schema.",
+    "Prompt compilation resolves a profile by platform, optional model, optional version, and task type; unknown target details use a conservative platform default.",
+    "Platform adapters may change ordering, redundancy, syntax, supported parameters, and evidence-scoped compensation, but may not change canonical facts.",
+    "Observed platform drift is handled in the relevant adapter rather than becoming a universal image fact.",
     "Validation separately checks shared visual invariants and platform-specific compilation rules."
   ],
   "adapter_expectations": {
     "gpt": [
-      "Use complete natural-language instructions and explicit spatial or occlusion relationships.",
-      "Counter unsupported beautification, symmetry inflation, and warm-color inflation only when those failure modes conflict with the source image.",
-      "Keep critical constraints close to the affected object instead of relying on a detached negative list."
+      "Use complete natural-language instructions and explicit spatial, structural, color, and occlusion relationships.",
+      "Keep critical constraints beside the affected object or region.",
+      "Apply compensation only when the current source or comparison evidence supports the observed drift."
     ],
     "grok": [
-      "Use compact direct instructions while enumerating visually distinct structural zones when simplification would collapse them.",
-      "Restate P0 geometry and environmental layers without inventing platform parameters.",
-      "Counter conversion into a conventional pyramid or simplified single-volume object when the source is structurally split."
+      "Use compact direct instructions while retaining all required structural zones and depth layers.",
+      "Restate P0 relationships without inventing platform parameters.",
+      "Keep distinct regions separate when simplification would merge geometry, material, or color."
     ],
     "midjourney": [
-      "Front-load full-shot composition, complete silhouette, subject scale, and unobstructed apex-to-base framing before attractive local details.",
-      "Describe the circular relief as a secondary embedded and partially occluded facade element so it does not take over the frame.",
-      "Append only supported conservative defaults such as source-derived aspect ratio, style raw, and relevant negative terms; do not invent a model version."
+      "Front-load framing, complete silhouette, subject scale, crop, and P0 geometry before high-salience local detail.",
+      "Describe local details through their role, location, attachment, and occlusion so they remain subordinate to the whole.",
+      "Append only source-derived aspect ratio, conservative style control, and directly relevant negative constraints unless the user requests more."
     ]
   },
   "pass_criteria": [
-    "All platform prompts preserve every P0 identity fact and all applicable P1 facts.",
-    "The three prompts differ materially in instruction structure rather than being translations with platform names changed.",
-    "No adapter promotes a P2 detail above P0 composition or geometry.",
-    "No exact model, version, seed, or hidden generation parameter is inferred from the source image.",
-    "The existing six-block Markdown output contract and source-image persistence behavior remain unchanged."
+    "All platform prompts preserve every P0 identity fact and all applicable P1 facts from the current image.",
+    "The three adapters differ materially in instruction structure without changing shared facts.",
+    "No adapter promotes P2 detail above P0 composition or geometry.",
+    "No model, version, seed, or hidden generation parameter is inferred from the source.",
+    "No adapter or regression rule contains a private-image-specific scene, object, palette, garment, or composition."
   ]
 }

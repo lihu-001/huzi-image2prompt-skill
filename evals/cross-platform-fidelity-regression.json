@@ -1,70 +1,52 @@
 {
-  "name": "cross-platform-photorealistic-selfie-fidelity",
+  "name": "cross-platform-general-reference-fidelity",
   "date": "2026-09-01",
-  "privacy": "The user-provided comparison images are not copied into the repository; this file records only generalized visual invariants and failure patterns.",
-  "source_profile": {
-    "canvas": "vertical mirror selfie, close framing, subject fills most of the frame",
+  "task": "reference-reconstruction",
+  "coverage_domains": [
+    "photographs with people, objects, or environments",
+    "illustrations with stylized shapes or surfaces",
+    "flat graphics and posters with text or solid fills",
+    "complex subjects with openings, overlaps, attachments, or occlusion",
+    "simple images where some profile dimensions are not applicable"
+  ],
+  "required_skill_invariants": {
     "material": [
-      "black stretch fabric",
-      "subtly visible textile grain",
-      "slight surface roughness",
-      "restrained natural sheen rather than a smooth satin or plastic surface",
-      "natural tension folds and small irregular wrinkles"
+      "Represent only visible grain, roughness, gloss, thickness, folds, stretch, wear, or other surface properties.",
+      "Generic realism or high-detail wording must not replace observable material attributes.",
+      "Flat or textureless sources must not receive invented microtexture."
     ],
-    "garment_structure": [
-      "deep V neckline",
-      "crossed or wrapped front construction",
-      "exposed shoulders and collarbone",
-      "low-rise lower garment",
-      "visible zipper and chain hardware"
+    "structure": [
+      "Preserve identity-defining geometry, openings, overlaps, attachments, connection points, and asymmetry.",
+      "Do not replace a complex subject with a conventional category-level shape."
     ],
-    "visibility_and_pose": [
-      "main facial features remain clearly visible",
-      "phone is beside the face rather than covering it",
-      "hair frames the face without covering the eyes",
-      "head is not strongly tilted downward",
-      "pose remains an informal close mirror selfie rather than a centered catalog portrait"
+    "visibility": [
+      "Preserve which parts are visible, adjacent, cropped, or occluded and which object causes each occlusion.",
+      "Do not force visibility or occlusion that the source does not show."
+    ],
+    "composition": [
+      "Preserve subject scale, crop, pose or orientation, negative space, and depth order.",
+      "Do not standardize an informal, asymmetric, close, distant, or otherwise source-defining composition."
     ],
     "light_and_color": [
-      "bright neutral indoor lighting",
-      "metal elevator reflections",
-      "no unsupported strong blue color cast"
+      "Preserve light direction, value structure, color temperature, and visible reflections.",
+      "Preserve source-relative hue, lightness, saturation, and saturation ranking for every applicable major region.",
+      "Keep local color relationships distinct from unsupported global color casts."
+    ],
+    "text_and_graphics": [
+      "Preserve legible source text exactly and retain its hierarchy, location, and alignment.",
+      "Do not invent unreadable text, graphics, or unsupported surface effects."
     ]
   },
-  "observed_failure_patterns": {
-    "gpt_like_output": [
-      "garment surface becomes uniformly smooth",
-      "subtle textile grain and roughness are lost",
-      "composition becomes more centered and standardized"
-    ],
-    "grok_like_output": [
-      "some folds remain but the fabric surface is still over-smoothed",
-      "close candid framing drifts toward a conventional portrait"
-    ],
-    "midjourney_like_output": [
-      "fabric grain improves",
-      "face becomes partially obscured by hair, phone, or downward head pose",
-      "deep V wrapped top changes into a conventional high-neck or crew-neck top",
-      "neutral lighting drifts toward a strong cool-blue cast"
-    ]
+  "platform_expectations": {
+    "gpt": "Use complete relationship-aware instructions with constraints beside affected objects.",
+    "grok": "Use compact instructions without collapsing required structural zones or depth layers.",
+    "midjourney": "Front-load composition and P0 geometry, then source-defining color and material, using only conservative supported parameters."
   },
-  "required_skill_invariants": [
-    "Material must be represented as a profile of grain, roughness, gloss, thickness, folds, and stretch when visible.",
-    "Generic realism or high-detail wording must not replace observable material attributes.",
-    "Garment or object geometry must preserve neckline, overlap, openings, waistline, and hardware.",
-    "Face or key-subject visibility must preserve the actual occlusion relationship rather than always forcing or ignoring occlusion.",
-    "Phone, hair, hand, and prop positions must be described relative to facial features when they affect visibility.",
-    "Subject scale, crop, pose, and informal-versus-standard portrait character must remain stable.",
-    "Overall color temperature must not drift without image evidence.",
-    "Flat illustrations and graphic posters must not receive invented photorealistic microtexture.",
-    "The final Markdown contains only six platform-specific blocks: GPT, Grok, and Midjourney in Chinese and English; the internal visual fact source is not emitted as a generic or natural-language prompt."
-  ],
   "pass_criteria": [
-    "All six platform-language variants retain every applicable high-drift invariant.",
-    "GPT and Grok variants use concrete material attributes instead of only realistic fabric wording.",
-    "Midjourney variants place high-drift positive facts early and use --no only for directly conflicting outcomes.",
-    "Positive description defines the correct material and geometry; negative terms do not replace it.",
-    "Final validation checks material, structure, visibility, composition, and light/color separately.",
-    "No generic, original, model-agnostic, or natural-language prompt section appears in the final Markdown."
+    "All requested platform-language variants retain every applicable high-drift invariant from one shared visual fact source.",
+    "Profiles are conditional: absent texture, text, people, depth, or saturation attributes are marked not applicable rather than invented.",
+    "Positive description defines correct structure, material, visibility, composition, and color; negative constraints do not replace it.",
+    "Validation checks each fidelity dimension independently.",
+    "The final Markdown output contract and source-image persistence behavior remain unchanged."
   ]
 }

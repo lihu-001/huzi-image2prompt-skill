@@ -8,6 +8,9 @@
     "visibility_profile": true,
     "composition_profile": true,
     "light_color_profile": true,
+    "per_region_saturation_profile": true,
+    "local_chroma_vs_global_cast": true,
+    "source_defining_color_fidelity_gate": true,
     "gpt_specific": true,
     "grok_specific": true,
     "midjourney_specific": true,
@@ -17,6 +20,5 @@
     "generic_prompt_omitted": true
   },
   "all_eval_json_valid": true,
-  "personal_images_copied_to_repository": false,
   "status": "PASS"
 }

@@ -1,0 +1,52 @@
+{
+  "name": "source-relative-color-saturation-fidelity",
+  "date": "2026-09-01",
+  "task": "reference-reconstruction",
+  "applicability": "Apply the same source-relative color rules to photographs, illustrations, posters, product images, portraits, environments, and other supported image types.",
+  "coverage_profiles": [
+    "images dominated by high saturation",
+    "images dominated by low saturation or near-neutral color",
+    "images mixing vivid local accents with restrained regions",
+    "flat graphics using discrete solid-color palettes",
+    "images where saturation is not a defining attribute"
+  ],
+  "required_color_profile": {
+    "per_region_channels": [
+      "hue family",
+      "relative lightness or value",
+      "relative saturation or chroma"
+    ],
+    "relative_relationships": [
+      "highest and lowest chroma anchors",
+      "saturation ranking among major regions",
+      "boundaries between local color regions",
+      "separation between local saturation and global color cast"
+    ],
+    "measurement_boundary": "Use source-relative language unless a trustworthy color-sampling tool is available; do not invent exact numeric color values."
+  },
+  "required_compilation_behavior": [
+    "Every platform prompt positively states the saturation level of each palette-defining region instead of relying on hue names alone.",
+    "A reported saturation drift changes only the affected color fields while already-correct structure and unrelated color regions remain locked.",
+    "Negative terms are included only when they directly conflict with observed source color or comparison evidence.",
+    "A constraint against a global color cast must not suppress correct local color, and local reinforcement must not alter restrained or neutral regions.",
+    "Flat graphics preserve solid-fill palette separation without gaining unsupported gradients, glow, texture, or photographic shading."
+  ],
+  "adapter_expectations": {
+    "gpt": "Attach source-relative saturation constraints to the affected objects or regions in complete relation-aware sentences.",
+    "grok": "List color zones and their relative saturation hierarchy compactly when simplification would average them together.",
+    "midjourney": "Place palette-defining chroma relationships after P0 geometry but before texture, using only source-supported negative constraints."
+  },
+  "color_fidelity_gate": [
+    "All platform-language variants preserve the same per-region hue, value, and saturation relationships.",
+    "A palette-defining saturation mismatch fails color fidelity even when the broad hue family is correct.",
+    "Global saturation is not raised or lowered indiscriminately.",
+    "The rule remains conditional on the current source instead of prescribing a preferred saturation style."
+  ],
+  "pass_criteria": [
+    "The Canonical Visual Spec records hue, value, and saturation per applicable region plus relative relationships.",
+    "Reconstruction and adapter guidance distinguish local color from global cast without naming a fixed palette or scene.",
+    "GPT, Grok, and Midjourney apply the same facts through platform-appropriate syntax.",
+    "Final validation contains an explicit source-relative color fidelity gate.",
+    "No rule or regression contract depends on a transient or private image."
+  ]
+}

@@ -1,23 +1,22 @@
 {
   "name": "structure-first-reconstruction-hierarchy",
   "date": "2026-09-01",
-  "privacy": "The user-provided comparison images are not copied into the repository; this file records a generalized reconstruction problem only.",
   "task": "reference-reconstruction",
-  "source_case": "A vertically framed asymmetric triangular megastructure with a central light slit, a partially occluded circular relief, a layered city, river, grassland, and a tiny observer.",
+  "applicability": "Use the same reconstruction hierarchy for every supported image, omitting only fields that are visibly not applicable.",
   "required_observation_order": [
     "skeleton_and_axes",
     "proportions_and_landmarks",
     "negative_spaces_and_occlusion",
     "three_value_tonal_masses",
     "depth_and_scale_layers",
-    "color_material_and_texture"
+    "color_calibration_material_and_texture"
   ],
   "required_reconstruction_spec": {
     "coordinate_system": "Use normalized canvas coordinates only when they materially improve strict reconstruction; mark them as approximate rather than pixel-exact.",
     "skeleton": [
       "outer silhouette and subject bounding region",
-      "dominant vertical, horizontal, diagonal, circular, and perspective axes",
-      "visual center of gravity and primary direction"
+      "dominant axes and perspective directions",
+      "visual center of gravity and primary orientation"
     ],
     "proportions": [
       "subject width-to-height relationship",
@@ -26,7 +25,7 @@
     ],
     "negative_spaces": [
       "background shapes around the silhouette",
-      "openings, gaps, wedges, and intervals inside the subject",
+      "openings, gaps, and intervals inside or between subjects",
       "which object occludes which and the approximate visible fraction"
     ],
     "tonal_masses": [
@@ -35,10 +34,15 @@
       "the brightest and darkest anchors"
     ],
     "depth": [
-      "ordered foreground, middle-ground, subject, and background layers",
+      "ordered depth layers",
       "scale reduction, overlap, contrast loss, atmospheric perspective, and reflections where visible"
     ],
-    "detail_gate": "Texture, inscriptions, cracks, grain, and decorative motifs are compiled only after the structure fields are complete and must never compensate for a missing or contradictory P0 relationship."
+    "color_profile": [
+      "hue family, relative value, and relative saturation for each major region",
+      "local high-chroma and low-chroma anchors plus relative saturation ranking",
+      "separation between correct local color and unsupported global cast"
+    ],
+    "detail_gate": "Texture, text, grain, and decorative motifs are compiled only after applicable structure fields are complete and must never compensate for a missing or contradictory P0 relationship."
   },
   "evaluation_weights": {
     "silhouette_and_skeleton": 30,
@@ -52,19 +56,21 @@
   "hard_gates": [
     "Any missing or contradictory P0 identity relationship fails the reconstruction regardless of total score.",
     "A wrong crop, silhouette, primary proportion, negative space, or major occlusion cannot be offset by detailed texture.",
-    "Prompt compilation must place structural facts before high-salience decorative detail."
+    "Prompt compilation must place structural facts before high-salience decorative detail.",
+    "A palette-defining saturation mismatch fails color fidelity even when the broad hue family remains correct."
   ],
   "comparison_loop": [
-    "When the user supplies generated results, compare them against the reconstruction spec rather than only checking whether named objects exist.",
+    "Compare generated results against the current Reconstruction Spec rather than a stored scene template.",
     "Identify at most the two highest-impact error classes per revision.",
     "Lock already-correct P0 fields and revise only the affected canonical or adapter constraints.",
-    "Do not claim pixel-level certainty or invent measurements unsupported by the image.",
-    "Do not generate or retry images unless the user explicitly requests generation; when explicitly requested, stop after three automatic correction rounds unless the user asks to continue."
+    "Do not claim pixel-level certainty or invent unsupported measurements.",
+    "Do not generate or retry images unless explicitly requested; stop after three automatic correction rounds unless the user asks to continue."
   ],
   "pass_criteria": [
-    "The reconstruction hierarchy is platform-neutral and runs before target adapter selection.",
-    "All six platform-language prompts preserve the same skeleton, proportions, negative spaces, tonal structure, and depth order.",
-    "Fine texture remains lower priority than global geometry in every platform prompt.",
-    "The existing model-aware adapter rules, six-block Markdown contract, and source-image persistence behavior remain intact."
+    "The hierarchy is platform-neutral and runs before target adapter selection.",
+    "All requested platform-language prompts preserve the same applicable structure, tonal, depth, color, and material facts.",
+    "Fields absent from the current image are omitted rather than filled from a previous example.",
+    "Fine texture remains lower priority than global geometry.",
+    "The adapter, Markdown output, and source-image persistence contracts remain intact."
   ]
 }

@@ -12,6 +12,8 @@
     "negative_space_and_occlusion_stage": true,
     "three_value_tonal_volume_stage": true,
     "ordered_depth_and_scale_layers": true,
+    "per_region_color_calibration": true,
+    "source_defining_saturation_gate": true,
     "texture_last_gate": true,
     "weighted_structure_first_evaluation": true,
     "P0_hard_failure_gate": true,
@@ -23,6 +25,5 @@
     "packaged_references_present": true,
     "packaged_source_hashes_match": true
   },
-  "personal_images_copied_to_repository": false,
   "status": "PASS"
 }

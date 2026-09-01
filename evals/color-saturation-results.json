@@ -1,0 +1,26 @@
+{
+  "feature": "source-relative-color-saturation-fidelity",
+  "date": "2026-09-01",
+  "validation_type": "general-skill-contract-and-package-regression",
+  "baseline": "evals/color-saturation-baseline.json",
+  "regression_spec": "evals/color-saturation-regression.json",
+  "checks": {
+    "per_region_hue_value_saturation_profile": true,
+    "relative_saturation_ranking": true,
+    "local_chroma_anchors": true,
+    "local_saturation_separated_from_global_cast": true,
+    "positive_source_relative_saturation_language": true,
+    "evidence_scoped_saturation_compensation": true,
+    "gpt_saturation_compilation": true,
+    "grok_saturation_zone_compilation": true,
+    "midjourney_chroma_relationship_compilation": true,
+    "cross_platform_saturation_validation": true,
+    "color_fidelity_gate": true,
+    "high_low_mixed_and_flat_palette_coverage": true,
+    "no_transient_image_dependency": true,
+    "all_eval_json_valid": true,
+    "skill_quick_validation": true,
+    "packaged_source_hashes_match": true
+  },
+  "status": "PASS"
+}
