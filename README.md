@@ -179,7 +179,8 @@ evals/
   *-baseline.json                修改前基线，允许记录 FAIL
   *-regression.json              通用回归契约
   *-results.json                 当前验证结果
-docs/                            历史设计与实施记录
+demo/
+  assets/                        公开演示图片
 dist/
   huzi-image2prompt.skill        可安装包
 ```
@@ -189,8 +190,6 @@ dist/
 1. [`huzi-image2prompt/SKILL.md`](huzi-image2prompt/SKILL.md)
 2. [`reconstruction-method.md`](huzi-image2prompt/references/reconstruction-method.md) 与 [`model-adapters.md`](huzi-image2prompt/references/model-adapters.md)
 3. [`evals/`](evals/) 中的 regression 和 results
-
-`docs/` 保留项目演进过程中的设计与实施记录，部分文档可能描述旧阶段行为，不作为当前运行契约。
 
 ## 验证与维护
 
