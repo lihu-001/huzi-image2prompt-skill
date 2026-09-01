@@ -1,0 +1,27 @@
+{
+  "feature": "model-aware-reference-reconstruction",
+  "date": "2026-09-01",
+  "validation_type": "skill-contract-and-package-regression",
+  "baseline": "evals/model-adapter-baseline.json",
+  "regression_spec": "evals/model-adapter-regression.json",
+  "checks": {
+    "canonical_visual_spec": true,
+    "explicit_spatial_relations": true,
+    "P0_P1_P2_priority_model": true,
+    "platform_model_version_task_profile_resolution": true,
+    "unknown_model_uses_conservative_default": true,
+    "bias_correction_separated_from_visual_facts": true,
+    "gpt_relation_aware_adapter": true,
+    "grok_structural_zone_adapter": true,
+    "midjourney_composition_first_adapter": true,
+    "shared_invariant_validation": true,
+    "platform_adapter_validation": true,
+    "legacy_six_block_output_preserved": true,
+    "all_eval_json_valid": true,
+    "skill_quick_validation": true,
+    "packaged_reference_present": true,
+    "packaged_source_hashes_match": true
+  },
+  "personal_images_copied_to_repository": false,
+  "status": "PASS"
+}

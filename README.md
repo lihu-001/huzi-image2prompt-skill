@@ -15,12 +15,16 @@
 
 - 覆盖写实照片、插画、海报和含文字图片
 - 提取主体、构图、环境、风格、光线、色彩、材质微结构、遮挡关系、服装/物体结构、镜头观感与宽高比
+- 先建立厂商无关的 Canonical Visual Spec，显式记录对象关系、前后层级和 `P0 identity / P1 similarity / P2 flexible` 复现优先级
+- 按“平台 / 可选模型 / 可选版本 / 任务类型”选择 Prompt adapter；未指定模型或版本时使用保守平台档案，不从图片猜测生成参数
 - 默认将 GPT、Grok、Midjourney 三个平台的中英文版本写入 Markdown 文件，共六个独立代码块；不再输出容易被误用于 Midjourney 的通用/自然语言 Prompt
 - 每个代码块包含完整正向描述和反义提示，一次复制、一次粘贴即可出图
 - 对织物颗粒、粗糙度、光泽、厚度、褶皱和拉伸进行显式描述，避免只写笼统的“真实材质”
 - 人物自拍会锁定脸部可见性、头部角度、手机/头发遮挡关系、主体占比和裁切
 - 服装或物体的领口、交叠、开口、腰线、附件等结构作为跨平台必须保持的事实
-- Midjourney 版本将高漂移事实前置，并自动附加 `--ar`、`--style raw` 和 `--no`
+- GPT 使用完整关系句并把限制放在对应对象附近；Grok 对复杂主体列出不可合并的结构分区；Midjourney 先锁定完整构图和 P0 几何，再写高显著局部细节
+- 模型偏差只作为有证据、带场景范围的 adapter 补偿，不会污染共享视觉事实或被误写成对厂商训练方式的推断
+- Midjourney 版本自动附加 `--ar`、`--style raw` 和相关 `--no`，不猜测或固定模型版本
 - 只在用户能够判断且会明显改变画面的关键歧义出现时先行确认
 - 支持附件、本地图片路径和可访问的图片 URL
 - 每次生成都保存为 `image-prompts/<图片名>-prompts-YYYYMMDD-HHmmss-fff.md`，控制台只返回文件路径
@@ -69,13 +73,13 @@ Markdown 文件包含图片来源、尺寸、宽高比、通过 `![原图](<asse
 5. Midjourney Prompt（中文）
 6. Midjourney Prompt (English)
 
-内部仍会先建立完整视觉事实源，但不会把它作为“原版”“通用”或“自然语言”Prompt 输出。GPT 和 Grok 使用针对各自平台的完整自然语言生成指令，并把“不要出现……”直接写在同一代码块中。Midjourney 使用结构优先的描述性 Prompt，并在末尾附加：
+内部先建立厂商无关的 Canonical Visual Spec，记录画布、主体、几何分区、空间和遮挡关系、前后景、光色、材质、文字，以及 P0/P1/P2 复现优先级；它不会作为“原版”“通用”或“自然语言”Prompt 输出。随后由三个平台 adapter 分别编译：GPT 使用完整关系句，Grok 使用紧凑的结构分区指令，Midjourney 把完整取景和 P0 几何放在高显著局部细节之前，并在末尾附加：
 
 ```text
 --ar [宽:高] --style raw --no [反义提示]
 ```
 
-不会单独输出 Negative Prompt 或“不确定项”。生成前会建立材质、结构、可见性、构图和光色五类高漂移画像，并要求所有平台版本保持一致。若图片存在会显著改变结果、且用户能够判断的关键歧义，技能会先询问一个确认问题。多张图片默认分别生成 Markdown 文件。
+不会单独输出 Negative Prompt 或“不确定项”。生成前会建立材质、结构、可见性、构图和光色五类高漂移画像，并要求所有平台版本保持一致；模型偏差只在 adapter 中基于用户对比或回归证据进行场景相关补偿。若图片存在会显著改变结果、且用户能够判断的关键歧义，技能会先询问一个确认问题。多张图片默认分别生成 Markdown 文件。
 
 ## 项目结构
 
@@ -83,9 +87,12 @@ Markdown 文件包含图片来源、尺寸、宽高比、通过 `![原图](<asse
 huzi-image2prompt/       可安装、可打包的技能目录
   SKILL.md               技能定义与工作流
   LICENSE                随技能分发的 MIT 许可证
+  references/
+    model-adapters.md     Canonical Visual Spec、目标档案和三平台 adapter 规则
 evals/evals.json         成功输出、不可访问路径、关键歧义、续答和重复生成行为用例
 evals/cross-platform-fidelity-regression.json  跨平台材质、结构、遮挡和构图回归规范
 evals/embedded-image-timestamp-regression.json  原图嵌入、时间戳和重复生成回归规范
+evals/model-adapter-regression.json  模型感知中间表示、优先级和平台偏差补偿回归规范
 evals/fixtures/          固定评估图片
 docs/plans/              实施计划
 dist/                    打包产物
