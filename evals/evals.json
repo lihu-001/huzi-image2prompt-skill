@@ -9,7 +9,7 @@
     ],
     "expected_behavior": [
       "实际读取附带图片，并把六个独立代码块写入 Markdown 文件：GPT、Grok、Midjourney 各中文和英文版本",
-      "未指定保存位置时写入当前工作目录的 image-prompts/，Markdown 文件名为 <原图名>-prompts-YYYYMMDD-HHmmss-fff.md，首次生成也必须带时间戳",
+      "未指定保存位置时写入当前工作目录的 .huzi-image-prompts/，Markdown 文件名为 <原图名>-prompts-YYYYMMDD-HHmmss-fff.md，首次生成也必须带时间戳",
       "Markdown 文件包含原图来源、精确原始尺寸 800 × 1000 与规范化生成比例 4:5，并明确区分两者",
       "将原图复制到 Markdown 同级 assets/，副本名为 <原图名>-source-<同一运行标识>.<原扩展名>，且不修改原图",
       "Markdown 在元数据后使用 ![原图](<assets/...>) 相对路径嵌入本次图片副本，路径可解析且不使用绝对路径或 Base64",
@@ -34,7 +34,7 @@
     ],
     "expected_behavior": [
       "实际读取附带图片，并把六个独立代码块写入 Markdown 文件：GPT、Grok、Midjourney 各中文和英文版本",
-      "未指定保存位置时写入当前工作目录的 image-prompts/，Markdown 文件名为 <原图名>-prompts-YYYYMMDD-HHmmss-fff.md，首次生成也必须带时间戳",
+      "未指定保存位置时写入当前工作目录的 .huzi-image-prompts/，Markdown 文件名为 <原图名>-prompts-YYYYMMDD-HHmmss-fff.md，首次生成也必须带时间戳",
       "Markdown 文件包含原图来源、精确原始尺寸 800 × 800 与规范化生成比例 1:1，并明确区分两者",
       "将原图复制到 Markdown 同级 assets/，副本名为 <原图名>-source-<同一运行标识>.<原扩展名>，且不修改原图",
       "Markdown 在元数据后使用 ![原图](<assets/...>) 相对路径嵌入本次图片副本，路径可解析且不使用绝对路径或 Base64",
@@ -90,7 +90,7 @@
     "expected_behavior": [
       "不重复询问已确认的雨衣或斗篷问题",
       "将 GPT、Grok、Midjourney 各中文和英文共六个独立代码块写入 Markdown 文件",
-      "未指定路径时保存到 image-prompts/rainy-neon-alley-prompts-YYYYMMDD-HHmmss-fff.md，并将原图复制到 image-prompts/assets/rainy-neon-alley-source-<同一运行标识>.png；任何历史文件均不覆盖",
+      "未指定路径时保存到 .huzi-image-prompts/rainy-neon-alley-prompts-YYYYMMDD-HHmmss-fff.md，并将原图复制到 .huzi-image-prompts/assets/rainy-neon-alley-source-<同一运行标识>.png；任何历史文件均不覆盖",
       "Markdown 在来源元数据后使用相对路径嵌入本次复制的雨夜巷道图片副本，链接可解析",
       "六版全部使用黄色雨衣结构，并把斗篷作为相关反义提示",
       "GPT 与 Grok 的四个代码块开头都写明竖向 4:5 和原始尺寸参考 800 × 1000",

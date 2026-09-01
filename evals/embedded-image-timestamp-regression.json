@@ -3,8 +3,8 @@
   "date": "2026-09-01",
   "contract": {
     "run_id_format": "YYYYMMDD-HHmmss-fff",
-    "default_markdown_pattern": "image-prompts/<image-stem>-prompts-<run-id>.md",
-    "default_asset_pattern": "image-prompts/assets/<image-stem>-source-<run-id>.<ext>",
+    "default_markdown_pattern": ".huzi-image-prompts/<image-stem>-prompts-<run-id>.md",
+    "default_asset_pattern": ".huzi-image-prompts/assets/<image-stem>-source-<run-id>.<ext>",
     "markdown_image_syntax": "![原图](<assets/...>)",
     "collision_suffixes": [
       "-001",
