@@ -1,0 +1,24 @@
+{
+  "fixture": "evals/fixtures/moon-cat-poster.png",
+  "image": {
+    "format": "PNG",
+    "mode": "RGB",
+    "width": 800,
+    "height": 800
+  },
+  "prompt": "极简扁平矢量海报，正方形 1:1 画布，纯深海军蓝背景。左上角以大号粗体无衬线全大写奶油白文字横排“MOON CAT”，左对齐；右上区域放置一个较大的奶油白实心圆（月亮），圆内无纹理。画面下半部偏左放置一只由纯色几何图形构成的抽象猫：奶油白竖向圆角矩形身体位于中央，背后露出橙色圆形身体的左右两侧，顶部叠放一个青绿色圆形头部，两只高而尖的橙色三角耳朵分居头部左右上方、耳尖朝上；不绘制眼睛、鼻子、嘴、胡须、尾巴或四肢细节。全部图形无描边、无阴影、无渐变、无纹理，边缘清晰。保留大量深蓝负空间，标题、月亮与猫形成左上—右上—左下的三点布局。色板仅使用深海军蓝、奶油白、亮橙色和青绿色，简洁现代的平面几何设计。",
+  "uncertainties": [
+    "只能判断标题使用粗体无衬线字体，无法仅凭图片可靠恢复具体字体名称。",
+    "猫是高度抽象的几何造型，无法确定其观察方向或具体姿态。"
+  ],
+  "checks": {
+    "read_real_image": true,
+    "preserved_visible_text": true,
+    "preserved_subjects": true,
+    "preserved_layout": true,
+    "preserved_palette": true,
+    "preserved_aspect_ratio": true,
+    "invented_details": false
+  },
+  "tool_note": "视觉 MCP 因服务凭据返回 HTTP 401；冒烟验证随后通过宿主原生图片读取能力完成。"
+}

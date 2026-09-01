@@ -1,0 +1,58 @@
+[
+  {
+    "scenario": "rainy-neon-alley",
+    "mode": "baseline",
+    "image_read": {
+      "path": "evals/fixtures/rainy-neon-alley.png",
+      "width": 800,
+      "height": 1000,
+      "aspect_ratio": "4:5"
+    },
+    "final_reply": "竖幅 4:5 的极简扁平矢量插画，深色雨夜巷道采用强烈的一点透视，左右高耸建筑向画面中央收拢。一个穿明黄色连帽雨衣的人物背对镜头，位于画面下方中央，圆形头部、梯形雨衣和深色双腿均以简洁几何形表现。巷道两侧悬挂无文字的圆角矩形霓虹灯牌，主色为高饱和青色与洋红色；空中散布数个青色、洋红色和黄色圆形光点。顶部横跨一根略微下垂的细线，并排列短促斜向雨线。湿润地面和巷道立面形成大面积青色、蓝绿色、紫红色几何反射光带，一直延伸至前景；背景为近黑海军蓝，整体高对比、无描边、硬边色块、干净图形设计、无文字、无写实纹理。",
+    "criteria": {
+      "actual_image_read": true,
+      "preserved_aspect_ratio": true,
+      "preserved_subject_position": true,
+      "preserved_rainy_alley": true,
+      "preserved_neon_palette": true,
+      "preserved_wet_reflections": true
+    },
+    "invented_details": [],
+    "gaps": []
+  },
+  {
+    "scenario": "moon-cat-poster",
+    "mode": "baseline",
+    "image_read": {
+      "path": "evals/fixtures/moon-cat-poster.png",
+      "width": 800,
+      "height": 800,
+      "aspect_ratio": "1:1"
+    },
+    "final_reply": "1:1 方形极简平面几何海报，纯深海军蓝背景，保留大面积留白。左上角排版大号粗体无衬线英文标题 MOON CAT，文字为暖奶油白色。右上区域放置一个硕大的暖奶油白色正圆，表现满月。画面下方偏左是一只由基础几何图形拼成的抽象猫：橙色大圆作为后部轮廓，前方叠加暖奶油白色圆角竖矩形，顶部中央叠加青绿色圆形，两侧各有一只橙色尖三角猫耳。全图严格使用深海军蓝、暖奶油白、亮橙色、青绿色四色；纯色块、无渐变、无纹理、无阴影，边缘清晰，构图简洁醒目。",
+    "criteria": {
+      "actual_image_read": true,
+      "preserved_visible_text": true,
+      "preserved_text_position": true,
+      "preserved_moon_position": true,
+      "preserved_cat_position": true,
+      "preserved_palette": true,
+      "preserved_aspect_ratio": true
+    },
+    "invented_details": [],
+    "gaps": []
+  },
+  {
+    "scenario": "missing-image",
+    "mode": "baseline",
+    "image_read": null,
+    "final_reply": "无法解析该图片：D:/missing/product.png 路径不存在，并且当前对话中也没有附件或其他可读取的图片内容。因此，我不能在看不到原图的情况下可靠反推出 Prompt。请上传图片，或提供一个确实存在且可访问的图片路径。",
+    "criteria": {
+      "reported_blocker": true,
+      "invented_no_content": true,
+      "provided_minimal_next_step": true
+    },
+    "invented_details": [],
+    "gaps": []
+  }
+]

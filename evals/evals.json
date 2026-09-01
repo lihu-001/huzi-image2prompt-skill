@@ -1,0 +1,36 @@
+[
+  {
+    "skills": ["huzi-image2prompt"],
+    "query": "解析图片，直接给我可复现画面的 Prompt。",
+    "files": ["evals/fixtures/rainy-neon-alley.png"],
+    "expected_behavior": [
+      "实际读取附带图片并输出可直接复制的 Prompt",
+      "保留竖幅比例、下方中央背对镜头的黄色雨衣人物、雨夜巷道、青色和洋红色霓虹及湿地反射",
+      "不添加图片中不存在的文字、车辆、雨伞或万能质量增强词",
+      "不声称恢复图片无法证明的精确镜头或原始生成参数"
+    ]
+  },
+  {
+    "skills": ["huzi-image2prompt"],
+    "query": "获取这个图片的 Prompt。",
+    "files": ["evals/fixtures/moon-cat-poster.png"],
+    "expected_behavior": [
+      "实际读取附带图片并输出可直接复制的 Prompt",
+      "准确保留左上 MOON CAT 原文、右上乳白色圆月和下方偏左的几何猫",
+      "保留方形比例、海军蓝背景以及乳白、橙、青绿四色关系",
+      "不添加图片中不存在的星星、云、五官、尾巴或纹理",
+      "提示精确字体名称无法可靠恢复，必要时后期排版"
+    ]
+  },
+  {
+    "skills": ["huzi-image2prompt"],
+    "query": "解析 D:/missing/product.png，获取这个图片的 Prompt。",
+    "files": [],
+    "expected_behavior": [
+      "明确说明路径不存在或图片不可访问",
+      "不编造任何图片内容",
+      "要求用户上传图片或提供可访问路径",
+      "不输出通用占位 Prompt"
+    ]
+  }
+]

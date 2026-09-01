@@ -1,0 +1,67 @@
+[
+  {
+    "scenario": "rainy-neon-alley",
+    "mode": "skill",
+    "image_read": {
+      "path": "evals/fixtures/rainy-neon-alley.png",
+      "width": 800,
+      "height": 1000,
+      "aspect_ratio": "4:5"
+    },
+    "final_reply": "扁平几何矢量插画，一条深蓝近黑色的狭窄雨夜巷道，透视线向画面深处中央汇聚；一名黄色人物背对视角站在画面下方中央，圆形头部、宽下摆黄色外衣和深色双腿，以简洁几何色块表现；巷道两侧上方悬挂无字的青色与洋红色矩形霓虹灯牌，顶部斜向线缆与细密雨线掠过；湿润地面形成由远及近拉长的青色和洋红色反射光带，左右冷暖霓虹对照，深色背景，轮廓清晰，竖幅 4:5。",
+    "criteria": {
+      "actual_image_read": true,
+      "preserved_aspect_ratio": true,
+      "preserved_subject_position": true,
+      "preserved_rainy_alley": true,
+      "preserved_neon_palette": true,
+      "preserved_wet_reflections": true,
+      "avoided_unseen_objects": true,
+      "avoided_quality_boosters": true,
+      "avoided_exact_camera_claims": true
+    },
+    "invented_details": [],
+    "gaps": []
+  },
+  {
+    "scenario": "moon-cat-poster",
+    "mode": "skill",
+    "image_read": {
+      "path": "evals/fixtures/moon-cat-poster.png",
+      "width": 800,
+      "height": 800,
+      "aspect_ratio": "1:1"
+    },
+    "final_reply": "极简几何平面海报，正方形 1:1 画布，深海军蓝纯色背景。左上方以大号粗体无衬线全大写字母排出奶油白文字 MOON CAT，左对齐并保留宽松边距；右上方放置一个较大的奶油白纯色圆形月亮。画面下方偏左是一只由基础几何色块构成的猫形图标：橙色圆形轮廓位于后层，两只橙色尖三角耳朵向上；前层为奶油白、底部圆角的竖向主体，中上部叠放青绿色圆形色块，并在其顶部露出一小段奶油白弧形。严格使用深海军蓝、奶油白、橙色、青绿色四种纯色；轮廓简洁，色块边缘清晰，无渐变、阴影或表面纹理，大片留白，现代极简平面设计。",
+    "criteria": {
+      "actual_image_read": true,
+      "preserved_visible_text": true,
+      "preserved_text_position": true,
+      "preserved_moon_position": true,
+      "preserved_cat_position": true,
+      "preserved_palette": true,
+      "preserved_aspect_ratio": true,
+      "avoided_unseen_objects": true,
+      "marked_font_uncertain": true
+    },
+    "invented_details": [],
+    "gaps": [
+      "具体字体名称无法从图片可靠确定。",
+      "原始模型与生成参数无法从图片恢复。"
+    ]
+  },
+  {
+    "scenario": "missing-image",
+    "mode": "skill",
+    "image_read": null,
+    "final_reply": "无法解析 D:/missing/product.png：该路径不存在，且当前没有附件或其他可读取的图片内容，因此我看不到图片，不能据此反推 Prompt。请上传图片，或提供一个确实存在且可访问的图片路径。",
+    "criteria": {
+      "reported_blocker": true,
+      "invented_no_content": true,
+      "provided_minimal_next_step": true,
+      "avoided_placeholder_prompt": true
+    },
+    "invented_details": [],
+    "gaps": []
+  }
+]
