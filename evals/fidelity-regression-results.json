@@ -1,0 +1,22 @@
+{
+  "feature": "cross-platform-fidelity-hardening",
+  "date": "2026-09-01",
+  "validation_type": "skill-contract-and-regression-spec",
+  "checks": {
+    "material_profile": true,
+    "structure_profile": true,
+    "visibility_profile": true,
+    "composition_profile": true,
+    "light_color_profile": true,
+    "gpt_specific": true,
+    "grok_specific": true,
+    "midjourney_specific": true,
+    "positive_not_replaced_by_negative": true,
+    "no_texture_hallucination": true,
+    "six_platform_specific_blocks": true,
+    "generic_prompt_omitted": true
+  },
+  "all_eval_json_valid": true,
+  "personal_images_copied_to_repository": false,
+  "status": "PASS"
+}

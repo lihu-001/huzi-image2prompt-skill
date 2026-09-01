@@ -2,10 +2,8 @@
   "fixture": "evals/fixtures/moon-cat-poster.png",
   "final_retest": {
     "poster": {
-      "code_blocks": 8,
+      "code_blocks": 6,
       "categories": [
-        "自然语言中文",
-        "自然语言英文",
         "GPT 中文",
         "GPT 英文",
         "Grok 中文",
@@ -24,7 +22,8 @@
       "separate_negative_prompt": false,
       "uncertainty_section": false,
       "invented_style_boosters": false,
-      "preserved_visible_text": "MOON CAT"
+      "preserved_visible_text": "MOON CAT",
+      "generic_prompt_output": false
     },
     "ambiguity_question": {
       "asked_one_question": true,
@@ -34,7 +33,7 @@
     "ambiguity_continuation": {
       "repeated_question": false,
       "applied_answer_to_all_versions": "黄色雨衣",
-      "code_blocks": 8,
+      "code_blocks": 6,
       "embedded_negative_constraints": true,
       "midjourney": {
         "ar": "4:5",
@@ -43,7 +42,8 @@
         "version_parameter": false
       },
       "invented_style_boosters": false,
-      "uncertainty_section": false
+      "uncertainty_section": false,
+      "generic_prompt_output": false
     },
     "missing_image": {
       "reported_blocker": true,
@@ -52,5 +52,6 @@
       "invented_content": false
     }
   },
-  "status": "PASS"
+  "status": "PASS",
+  "validation_type": "skill-contract-static-retest"
 }

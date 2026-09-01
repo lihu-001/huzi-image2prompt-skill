@@ -1,0 +1,25 @@
+{
+  "feature": "markdown-file-output",
+  "date": "2026-09-01",
+  "checks": {
+    "successful_parse_writes_markdown": true,
+    "default_directory": "image-prompts",
+    "named_image_pattern": "<image-stem>-prompts-YYYYMMDD-HHmmss-fff.md",
+    "unnamed_attachment_pattern": "image-prompt-YYYYMMDD-HHmmss-fff.md",
+    "utf8_output": true,
+    "existing_file_preserved": true,
+    "multiple_images_separate_by_default": true,
+    "console_returns_path_only": true,
+    "write_failure_is_reported": true,
+    "missing_image_creates_no_placeholder_file": true,
+    "timestamp_on_every_successful_run": true,
+    "embedded_source_image": true,
+    "source_asset_pattern": "assets/<image-stem>-source-<same-run-id>.<ext>",
+    "relative_markdown_image_link": "![原图](<assets/...>)",
+    "same_image_repeated_generation": true,
+    "same_timestamp_collision_sequence": true,
+    "platform_specific_prompt_blocks": 6,
+    "generic_natural_language_prompt_omitted": true
+  },
+  "status": "PASS"
+}

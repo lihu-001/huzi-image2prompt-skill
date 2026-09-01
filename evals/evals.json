@@ -1,65 +1,121 @@
 [
   {
-    "skills": ["huzi-image2prompt"],
+    "skills": [
+      "huzi-image2prompt"
+    ],
     "query": "解析图片，直接给我可复现画面的 Prompt。",
-    "files": ["evals/fixtures/rainy-neon-alley.png"],
+    "files": [
+      "evals/fixtures/rainy-neon-alley.png"
+    ],
     "expected_behavior": [
-      "实际读取附带图片并输出八个独立代码块：自然语言、GPT、Grok、Midjourney 各中文和英文版本",
-      "八版保留竖幅比例、下方中央黄色人物、雨夜巷道、青色和洋红色霓虹及湿地反射",
+      "实际读取附带图片，并把六个独立代码块写入 Markdown 文件：GPT、Grok、Midjourney 各中文和英文版本",
+      "未指定保存位置时写入当前工作目录的 image-prompts/，Markdown 文件名为 <原图名>-prompts-YYYYMMDD-HHmmss-fff.md，首次生成也必须带时间戳",
+      "Markdown 文件包含原图来源、可取得的尺寸与约分后的宽高比",
+      "将原图复制到 Markdown 同级 assets/，副本名为 <原图名>-source-<同一运行标识>.<原扩展名>，且不修改原图",
+      "Markdown 在元数据后使用 ![原图](<assets/...>) 相对路径嵌入本次图片副本，路径可解析且不使用绝对路径或 Base64",
+      "六版保留竖幅比例、下方中央黄色人物、雨夜巷道、青色和洋红色霓虹及湿地反射",
       "每个代码块内嵌与当前画面相关的反义提示，不单列 Negative Prompt",
       "GPT 与 Grok 使用可直接粘贴的自然语言生成指令",
+      "识别该图为扁平几何插画，不为黄色服装或巷道虚构照片级织物颗粒、纤维、磨损或皮肤质感",
       "Midjourney 两版均包含 --ar 4:5、--style raw 和 --no，且不固定 --v",
-      "八版不添加原图未呈现的电影感、丝网印刷、杰作、8K 等风格增强词",
-      "最终不输出不确定项章节，也不声称恢复精确镜头或原始生成参数"
+      "六版不添加原图未呈现的电影感、丝网印刷、杰作、8K 等风格增强词",
+      "最终不输出不确定项章节，也不声称恢复精确镜头或原始生成参数",
+      "写入成功后，最终回复只报告实际 Markdown 文件路径，不在控制台重复打印六个 Prompt",
+      "不输出通用、原版或自然语言 Prompt，只保留 GPT、Grok、Midjourney 平台专用版本"
     ]
   },
   {
-    "skills": ["huzi-image2prompt"],
+    "skills": [
+      "huzi-image2prompt"
+    ],
     "query": "获取这个图片的 Prompt。",
-    "files": ["evals/fixtures/moon-cat-poster.png"],
+    "files": [
+      "evals/fixtures/moon-cat-poster.png"
+    ],
     "expected_behavior": [
-      "实际读取附带图片并输出八个独立代码块：自然语言、GPT、Grok、Midjourney 各中文和英文版本",
-      "八版准确保留左上 MOON CAT 原文、右上乳白色圆月、下方偏左几何猫、方形比例与四色关系",
+      "实际读取附带图片，并把六个独立代码块写入 Markdown 文件：GPT、Grok、Midjourney 各中文和英文版本",
+      "未指定保存位置时写入当前工作目录的 image-prompts/，Markdown 文件名为 <原图名>-prompts-YYYYMMDD-HHmmss-fff.md，首次生成也必须带时间戳",
+      "Markdown 文件包含原图来源、可取得的尺寸与约分后的宽高比",
+      "将原图复制到 Markdown 同级 assets/，副本名为 <原图名>-source-<同一运行标识>.<原扩展名>，且不修改原图",
+      "Markdown 在元数据后使用 ![原图](<assets/...>) 相对路径嵌入本次图片副本，路径可解析且不使用绝对路径或 Base64",
+      "六版准确保留左上 MOON CAT 原文、右上乳白色圆月、下方偏左几何猫、方形比例与四色关系",
       "图片原文 MOON CAT 在中英文版本中保持不变",
       "每个代码块内嵌反义提示，不添加星星、云、五官、尾巴或纹理",
+      "识别海报为纯色几何图形，不因新增材质规则而虚构纸张颗粒、织物纹理、阴影或三维表面",
       "Midjourney 两版均包含 --ar 1:1、--style raw 和 --no，且不固定 --v",
-      "八版不添加原图未呈现的丝网印刷、电影感、3D 或其他风格增强词",
-      "最终不输出不确定项章节"
+      "六版不添加原图未呈现的丝网印刷、电影感、3D 或其他风格增强词",
+      "最终不输出不确定项章节",
+      "写入成功后，最终回复只报告实际 Markdown 文件路径，不在控制台重复打印六个 Prompt",
+      "不输出通用、原版或自然语言 Prompt，只保留 GPT、Grok、Midjourney 平台专用版本"
     ]
   },
   {
-    "skills": ["huzi-image2prompt"],
+    "skills": [
+      "huzi-image2prompt"
+    ],
     "query": "解析 D:/missing/product.png，获取这个图片的 Prompt。",
     "files": [],
     "expected_behavior": [
       "明确说明路径不存在或图片不可访问",
       "不编造任何图片内容",
       "要求用户上传图片或提供可访问路径",
-      "不输出八个占位代码块"
+      "不输出六个占位代码块",
+      "不创建空白或占位 Markdown 文件"
     ]
   },
   {
-    "skills": ["huzi-image2prompt"],
+    "skills": [
+      "huzi-image2prompt"
+    ],
     "query": "解析这张图片。图片中的服装既可能理解为雨衣也可能理解为斗篷，两种解释会明显改变服装结构；我可以确认，请先处理这个问题。",
-    "files": ["evals/fixtures/rainy-neon-alley.png"],
+    "files": [
+      "evals/fixtures/rainy-neon-alley.png"
+    ],
     "expected_behavior": [
       "只询问一个关于雨衣或斗篷的简洁确认问题",
-      "用户回答前不输出八个 Prompt",
-      "不追问种子、采样器、精确焦段或其他不可恢复参数"
+      "用户回答前不输出六个 Prompt",
+      "不追问种子、采样器、精确焦段或其他不可恢复参数",
+      "不输出通用、原版或自然语言 Prompt，只保留 GPT、Grok、Midjourney 平台专用版本"
     ]
-  }
-  ,
+  },
   {
-    "skills": ["huzi-image2prompt"],
+    "skills": [
+      "huzi-image2prompt"
+    ],
     "query": "继续上轮对话：你刚才问我黄色服装按雨衣还是斗篷复现，我回答‘按雨衣’。现在继续生成最终 Prompt。",
-    "files": ["evals/fixtures/rainy-neon-alley.png"],
+    "files": [
+      "evals/fixtures/rainy-neon-alley.png"
+    ],
     "expected_behavior": [
       "不重复询问已确认的雨衣或斗篷问题",
-      "输出自然语言、GPT、Grok、Midjourney 各中文和英文共八个独立代码块",
-      "八版全部使用黄色雨衣结构，并把斗篷作为相关反义提示",
+      "将 GPT、Grok、Midjourney 各中文和英文共六个独立代码块写入 Markdown 文件",
+      "未指定路径时保存到 image-prompts/rainy-neon-alley-prompts-YYYYMMDD-HHmmss-fff.md，并将原图复制到 image-prompts/assets/rainy-neon-alley-source-<同一运行标识>.png；任何历史文件均不覆盖",
+      "Markdown 在来源元数据后使用相对路径嵌入本次复制的雨夜巷道图片副本，链接可解析",
+      "六版全部使用黄色雨衣结构，并把斗篷作为相关反义提示",
       "Midjourney 两版均包含 --ar 4:5、--style raw 和 --no，且不固定 --v",
       "不询问种子、采样器、精确焦段或其他不可恢复参数",
-      "不输出不确定项章节"
+      "不输出不确定项章节",
+      "最终回复只报告实际 Markdown 文件路径，不重复打印完整 Prompt",
+      "不输出通用、原版或自然语言 Prompt，只保留 GPT、Grok、Midjourney 平台专用版本"
+    ]
+  },
+  {
+    "skills": [
+      "huzi-image2prompt"
+    ],
+    "query": "把同一张图片连续解析两次，保存到 outputs/custom-result；两次结果都要保留并在 Markdown 中显示原图。",
+    "files": [
+      "evals/fixtures/moon-cat-poster.png"
+    ],
+    "expected_behavior": [
+      "两次生成均在 outputs/ 下创建 custom-result-YYYYMMDD-HHmmss-fff.md；缺少 .md 扩展名时自动补齐后再插入运行标识",
+      "两次生成均在 outputs/assets/ 下复制独立图片副本，并让各自 Markdown 使用相对路径引用对应副本",
+      "Markdown 与图片副本在每次运行中共用同一运行标识，两次运行的最终标识不同",
+      "若两次生成得到相同毫秒级运行标识，则使用 -001、-002 等递增序号避让，同时检查 Markdown 和图片副本冲突",
+      "任何既有 Markdown、图片副本或原图均不覆盖、不删除、不修改",
+      "每份 Markdown 均保留来源、尺寸、宽高比和六个独立 Prompt 代码块",
+      "最终回复只报告两份实际 Markdown 路径，不重复打印 Prompt",
+      "不输出通用、原版或自然语言 Prompt，只保留 GPT、Grok、Midjourney 平台专用版本"
     ]
   }
 ]
