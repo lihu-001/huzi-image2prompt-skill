@@ -1,0 +1,74 @@
+{
+  "name": "model-aware-reference-reconstruction",
+  "date": "2026-09-01",
+  "privacy": "The user-provided comparison images are not copied into the repository; this file records only generalized visual invariants and observed drift patterns.",
+  "task": "reference-reconstruction",
+  "canonical_visual_spec": {
+    "canvas": "vertical distant establishing shot",
+    "primary_subject": "a split triangular ancient-futurist megastructure shown completely from apex to base",
+    "geometry_and_relations": [
+      "near-black left wing and rust-red illuminated right wing remain visibly asymmetric",
+      "a thin vertical light slit connects the apex to the lower entrance",
+      "a large circular calendar relief is embedded in the upper-middle facade and partially occluded by diagonal beams",
+      "a pale horizontal relief base separates the monument from the stepped temple below"
+    ],
+    "depth_layers": [
+      "sky",
+      "megastructure",
+      "relief base and stepped temple",
+      "dusty settlement",
+      "river",
+      "dry grassland and tiny red-robed observer"
+    ],
+    "priorities": {
+      "P0_identity": [
+        "complete distant silhouette",
+        "split-wing geometry",
+        "left-dark right-warm asymmetry",
+        "central light slit",
+        "partially occluded calendar relief"
+      ],
+      "P1_similarity": [
+        "pale relief base",
+        "layered temple, settlement, river, and tiny observer",
+        "restrained blue-gray and copper palette"
+      ],
+      "P2_flexible": [
+        "exact glyph shapes",
+        "building count",
+        "bird positions"
+      ]
+    }
+  },
+  "required_architecture": [
+    "The visual fact source is platform-neutral and contains geometry, relative scale, position, occlusion, depth order, lighting, palette, and P0/P1/P2 priorities.",
+    "Prompt compilation resolves a profile by platform, optional model, optional version, and task type; unknown model details use a conservative platform default and are never inferred from the image.",
+    "Platform adapters may change ordering, redundancy, syntax, and supported parameters, but may not change canonical visual facts.",
+    "Observed platform drift is handled as adapter-level bias correction rather than being written into the canonical visual spec.",
+    "Validation separately checks shared visual invariants and platform-specific compilation rules."
+  ],
+  "adapter_expectations": {
+    "gpt": [
+      "Use complete natural-language instructions and explicit spatial or occlusion relationships.",
+      "Counter unsupported beautification, symmetry inflation, and warm-color inflation only when those failure modes conflict with the source image.",
+      "Keep critical constraints close to the affected object instead of relying on a detached negative list."
+    ],
+    "grok": [
+      "Use compact direct instructions while enumerating visually distinct structural zones when simplification would collapse them.",
+      "Restate P0 geometry and environmental layers without inventing platform parameters.",
+      "Counter conversion into a conventional pyramid or simplified single-volume object when the source is structurally split."
+    ],
+    "midjourney": [
+      "Front-load full-shot composition, complete silhouette, subject scale, and unobstructed apex-to-base framing before attractive local details.",
+      "Describe the circular relief as a secondary embedded and partially occluded facade element so it does not take over the frame.",
+      "Append only supported conservative defaults such as source-derived aspect ratio, style raw, and relevant negative terms; do not invent a model version."
+    ]
+  },
+  "pass_criteria": [
+    "All platform prompts preserve every P0 identity fact and all applicable P1 facts.",
+    "The three prompts differ materially in instruction structure rather than being translations with platform names changed.",
+    "No adapter promotes a P2 detail above P0 composition or geometry.",
+    "No exact model, version, seed, or hidden generation parameter is inferred from the source image.",
+    "The existing six-block Markdown output contract and source-image persistence behavior remain unchanged."
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "feature": "model-aware-reference-reconstruction",
+  "date": "2026-09-01",
+  "validation_type": "pre-change-skill-contract-audit",
+  "checks": {
+    "platform_neutral_fact_source": true,
+    "high_drift_profiles": true,
+    "explicit_spatial_relation_schema": false,
+    "P0_P1_P2_priority_model": false,
+    "platform_model_version_task_profile_resolution": false,
+    "bias_correction_separated_from_visual_facts": false,
+    "gpt_observed_bias_policy": false,
+    "grok_structural_zone_policy": false,
+    "midjourney_composition_before_salient_detail": false,
+    "shared_invariant_and_adapter_validation_separated": false
+  },
+  "failure_summary": "The current skill has a shared visual fact source and basic platform wording, but it lacks an explicit intermediate representation, target-profile resolution, priority-aware compilation, and model-specific bias correction.",
+  "status": "FAIL"
+}
