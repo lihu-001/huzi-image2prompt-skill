@@ -1,0 +1,19 @@
+{
+  "feature": "structure-first-reconstruction-hierarchy",
+  "date": "2026-09-01",
+  "validation_type": "pre-change-skill-contract-audit",
+  "checks": {
+    "approximate_normalized_measurement": true,
+    "explicit_skeleton_and_axis_stage": false,
+    "landmark_and_pairwise_proportion_stage": false,
+    "negative_space_stage": false,
+    "three_value_tonal_mass_stage": false,
+    "ordered_depth_layers": true,
+    "texture_last_gate": false,
+    "weighted_structure_first_evaluation": false,
+    "P0_hard_failure_gate": false,
+    "bounded_comparison_and_correction_loop": false
+  },
+  "failure_summary": "The current skill records geometry, relationships, priorities, and depth layers, but it does not yet enforce a reconstruction hierarchy from skeleton through negative space and tonal volume to texture, nor does it prevent decorative detail from compensating for structural failure.",
+  "status": "FAIL"
+}
