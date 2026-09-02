@@ -110,6 +110,7 @@
       "evals/fixtures/moon-cat-poster.png"
     ],
     "expected_behavior": [
+      "请求无复刻或创意信号，先询问一次模式选择；用户选择复刻后再执行两次生成，两次之间不重复询问",
       "两次生成均在 outputs/ 下创建 custom-result-YYYYMMDD-HHmmss-fff.md；缺少 .md 扩展名时自动补齐后再插入运行标识",
       "两次生成均在 outputs/assets/ 下复制独立图片副本，并让各自 Markdown 使用相对路径引用对应副本",
       "Markdown 与图片副本在每次运行中共用同一运行标识，两次运行的最终标识不同",
@@ -118,6 +119,75 @@
       "每份 Markdown 均保留来源、精确原始尺寸、规范化生成比例和六个独立 Prompt 代码块；GPT/Grok 含尺寸参考，Midjourney 只使用紧凑 --ar",
       "最终回复只报告两份实际 Markdown 路径，不重复打印 Prompt",
       "不输出通用、原版或自然语言 Prompt，只保留 GPT、Grok、Midjourney 平台专用版本"
+    ]
+  },
+  {
+    "skills": [
+      "huzi-image2prompt"
+    ],
+    "query": "解析这张粘贴进来的图片，给我可复现画面的 Prompt。",
+    "files": [
+      "evals/fixtures/mmexport1693481234567.png"
+    ],
+    "expected_behavior": [
+      "判定 mmexport1693481234567 为机器名，不将其用于任何输出文件名",
+      "Markdown 文件名为 .huzi-image-prompts/<语义基名>-prompts-YYYYMMDD-HHmmss-fff.md；语义基名是从解析结果提炼的 8–20 字符中文短语，体现主体与区分特征（如 黄雨衣男孩雨夜巷道），不含原始机器名、空白和非法文件名字符",
+      "图片副本与 Markdown 共用同一语义基名和运行标识：.huzi-image-prompts/assets/<语义基名>-source-<同一运行标识>.png",
+      "Markdown 元数据“原图”行保留原始文件名 mmexport1693481234567.png 全文，可追溯来源",
+      "实际读取附带图片，六个平台专用代码块与解析结果章节照常生成，命名规则不影响内容质量",
+      "最终回复只报告实际 Markdown 文件路径，不重复打印完整 Prompt"
+    ]
+  },
+  {
+    "skills": [
+      "huzi-image2prompt"
+    ],
+    "query": "解析这张图，然后基于它做创意：把雨夜换成雪夜。",
+    "files": [
+      "evals/fixtures/rainy-neon-alley.png"
+    ],
+    "expected_behavior": [
+      "进入创意模式并建立 Creative Transform Spec：七项画像全部声明继承、变换或放开，无未声明维度",
+      "场景环境与明暗色彩维度标记变换，写明具体映射（雨丝→飘雪、湿反射→积雪、霓虹→暖黄路灯等），主体、构图与空间维度标记继承",
+      "给出功能接替说明且成立：黄雨衣成为画面唯一高饱和暖色锚点，接替原霓虹的视觉重心功能",
+      "Markdown 标题为“图片创意 Prompt”，“图片解析结果”之后有“创意方向”章节（方向、概念、继承/变换/放开、功能接替）",
+      "未指定保存位置时文件名为 .huzi-image-prompts/<名称基名>-creative-<方向标识>-prompts-YYYYMMDD-HHmmss-fff.md，图片副本命名规则不变",
+      "六版中继承维度（黄雨衣男孩、下方中央位置、竖向 4:5、原始尺寸参考 800 × 1000）与参考图一致，无虚构",
+      "六版中变换维度确实呈现雪夜而非雨夜；反义提示排除雨丝、湿反射、霓虹等“变回原样”的结果",
+      "不输出通用、原版或自然语言 Prompt，只保留 GPT、Grok、Midjourney 平台专用版本",
+      "最终回复只报告实际 Markdown 文件路径，不重复打印完整 Prompt"
+    ]
+  },
+  {
+    "skills": [
+      "huzi-image2prompt"
+    ],
+    "query": "帮我基于这张图做点创意。",
+    "files": [
+      "evals/fixtures/moon-cat-poster.png"
+    ],
+    "expected_behavior": [
+      "实际读取图片并完成解析，但不直接输出 Prompt",
+      "沿风格媒介迁移、场景环境置换、时间天气变换、视角构图变换、色彩光线重构、叙事元素混搭轴提出 3 个互不相同的候选方向",
+      "每个候选方向只有一句话概念和将变换的维度，不包含完整 Prompt",
+      "用户选定方向后才建立 Creative Transform Spec 并派生六个平台专用代码块",
+      "方向选定前的回复不写入 Markdown 文件"
+    ]
+  },
+  {
+    "skills": [
+      "huzi-image2prompt"
+    ],
+    "query": "解析图片。",
+    "files": [
+      "evals/fixtures/rainy-neon-alley.png"
+    ],
+    "expected_behavior": [
+      "指令无复刻或创意信号，读图完成后、输出任何 Prompt 前必须询问一次模式：复刻还原（默认）、创意创作·提 3 个方向、创意创作·用户自述方向",
+      "用户作出选择前不写入 Markdown 文件、不输出 Prompt",
+      "模式询问与关键歧义问题合并为同一次提问，生成前最多打断一次",
+      "用户选择复刻还原后，按复刻流程生成六个平台专用代码块并落盘，文件名为 <名称基名>-prompts-YYYYMMDD-HHmmss-fff.md",
+      "最终回复只报告实际 Markdown 文件路径，不重复打印完整 Prompt"
     ]
   }
 ]

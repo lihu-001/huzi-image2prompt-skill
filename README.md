@@ -1,6 +1,6 @@
 # Huzi Image2Prompt
 
-`huzi-image2prompt` 是一个开源 Agent Skill。它读取参考图，提取可见的主体、结构、构图、光色、材质和文字信息，再生成可直接用于 GPT Image、Grok Imagine、Midjourney 的中英文平台专用 Prompt，并将结果保存为 Markdown 文件。
+`huzi-image2prompt` 是一个开源 Agent Skill。它读取参考图，提取可见的主体、结构、构图、光色、材质和文字信息，再生成可直接用于 GPT Image、Grok Imagine、Midjourney 的中英文平台专用 Prompt，并将结果保存为 Markdown 文件。默认为复刻模式（零漂移复现）；也可以基于解析结果做受控创意创作：按继承/变换/放开声明控制维度，让画面只在指定维度有意变化。
 
 ## 快速开始
 
@@ -34,6 +34,10 @@ Claude Code: ~/.claude/skills/huzi-image2prompt/
 - `获取这个图片的 Prompt`
 - `反推这张图的提示词`
 - `只要 Grok 中文 Prompt`
+- `基于这张图做创意，换成雪夜`（创意模式：给出方向直接创作）
+- `帮我基于这张图做点创意`（创意模式：先给 3 个候选方向供选择）
+
+指令不含模式信号时（如只说“解析图片”），读图后、生成前会询问一次模式：复刻还原（默认）、创意创作·提 3 个方向、创意创作·自述方向；含明确信号（如“反推”“创意”）时直接执行，不再询问。
 
 若图片不存在、损坏、无权限或无法解码，技能会说明阻塞原因，不会编造图片内容或创建占位文件。
 
@@ -43,10 +47,12 @@ Claude Code: ~/.claude/skills/huzi-image2prompt/
 
 ```text
 .huzi-image-prompts/
-  <图片名>-prompts-<YYYYMMDD-HHmmss-fff>.md
+  <名称基名>-prompts-<YYYYMMDD-HHmmss-fff>.md
   assets/
-    <图片名>-source-<YYYYMMDD-HHmmss-fff>.<扩展名>
+    <名称基名>-source-<YYYYMMDD-HHmmss-fff>.<扩展名>
 ```
+
+名称基名取可读的原图文件名；粘贴图、截图等机器名（如 `mmexport…`、UUID、`image (37)`）不进入输出文件名，改用从解析结果提炼的中文语义短语（如 `黄雨衣男孩雨夜巷道`），原始文件名完整保留在 Markdown 元数据中。
 
 每份 Markdown 包含：
 
