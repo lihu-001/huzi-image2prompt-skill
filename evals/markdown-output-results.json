@@ -3,7 +3,7 @@
   "date": "2026-09-01",
   "checks": {
     "successful_parse_writes_markdown": true,
-    "default_directory": ".huzi-image-prompts",
+    "default_directory": ".huzi-image2prompt",
     "named_image_pattern": "<image-stem>-prompts-YYYYMMDD-HHmmss-fff.md",
     "unnamed_attachment_pattern": "image-prompt-YYYYMMDD-HHmmss-fff.md",
     "utf8_output": true,

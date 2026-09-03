@@ -9,7 +9,7 @@
     ],
     "expected_behavior": [
       "实际读取附带图片，并把六个独立代码块写入 Markdown 文件：GPT、Grok、Midjourney 各中文和英文版本",
-      "未指定保存位置时写入当前工作目录的 .huzi-image-prompts/，Markdown 文件名为 <原图名>-prompts-YYYYMMDD-HHmmss-fff.md，首次生成也必须带时间戳",
+      "未指定保存位置时写入当前工作目录的 .huzi-image2prompt/，Markdown 文件名为 <原图名>-prompts-YYYYMMDD-HHmmss-fff.md，首次生成也必须带时间戳",
       "Markdown 文件包含原图来源、精确原始尺寸 800 × 1000 与规范化生成比例 4:5，并明确区分两者",
       "将原图复制到 Markdown 同级 assets/，副本名为 <原图名>-source-<同一运行标识>.<原扩展名>，且不修改原图",
       "Markdown 在元数据后使用 ![原图](<assets/...>) 相对路径嵌入本次图片副本，路径可解析且不使用绝对路径或 Base64",
@@ -34,7 +34,7 @@
     ],
     "expected_behavior": [
       "实际读取附带图片，并把六个独立代码块写入 Markdown 文件：GPT、Grok、Midjourney 各中文和英文版本",
-      "未指定保存位置时写入当前工作目录的 .huzi-image-prompts/，Markdown 文件名为 <原图名>-prompts-YYYYMMDD-HHmmss-fff.md，首次生成也必须带时间戳",
+      "未指定保存位置时写入当前工作目录的 .huzi-image2prompt/，Markdown 文件名为 <原图名>-prompts-YYYYMMDD-HHmmss-fff.md，首次生成也必须带时间戳",
       "Markdown 文件包含原图来源、精确原始尺寸 800 × 800 与规范化生成比例 1:1，并明确区分两者",
       "将原图复制到 Markdown 同级 assets/，副本名为 <原图名>-source-<同一运行标识>.<原扩展名>，且不修改原图",
       "Markdown 在元数据后使用 ![原图](<assets/...>) 相对路径嵌入本次图片副本，路径可解析且不使用绝对路径或 Base64",
@@ -90,7 +90,7 @@
     "expected_behavior": [
       "不重复询问已确认的雨衣或斗篷问题",
       "将 GPT、Grok、Midjourney 各中文和英文共六个独立代码块写入 Markdown 文件",
-      "未指定路径时保存到 .huzi-image-prompts/rainy-neon-alley-prompts-YYYYMMDD-HHmmss-fff.md，并将原图复制到 .huzi-image-prompts/assets/rainy-neon-alley-source-<同一运行标识>.png；任何历史文件均不覆盖",
+      "未指定路径时保存到 .huzi-image2prompt/rainy-neon-alley-prompts-YYYYMMDD-HHmmss-fff.md，并将原图复制到 .huzi-image2prompt/assets/rainy-neon-alley-source-<同一运行标识>.png；任何历史文件均不覆盖",
       "Markdown 在来源元数据后使用相对路径嵌入本次复制的雨夜巷道图片副本，链接可解析",
       "六版全部使用黄色雨衣结构，并把斗篷作为相关反义提示",
       "GPT 与 Grok 的四个代码块开头都写明竖向 4:5 和原始尺寸参考 800 × 1000",
@@ -131,8 +131,8 @@
     ],
     "expected_behavior": [
       "判定 mmexport1693481234567 为机器名，不将其用于任何输出文件名",
-      "Markdown 文件名为 .huzi-image-prompts/<语义基名>-prompts-YYYYMMDD-HHmmss-fff.md；语义基名是从解析结果提炼的 8–20 字符中文短语，体现主体与区分特征（如 黄雨衣男孩雨夜巷道），不含原始机器名、空白和非法文件名字符",
-      "图片副本与 Markdown 共用同一语义基名和运行标识：.huzi-image-prompts/assets/<语义基名>-source-<同一运行标识>.png",
+      "Markdown 文件名为 .huzi-image2prompt/<语义基名>-prompts-YYYYMMDD-HHmmss-fff.md；语义基名是从解析结果提炼的 8–20 字符中文短语，体现主体与区分特征（如 黄雨衣男孩雨夜巷道），不含原始机器名、空白和非法文件名字符",
+      "图片副本与 Markdown 共用同一语义基名和运行标识：.huzi-image2prompt/assets/<语义基名>-source-<同一运行标识>.png",
       "Markdown 元数据“原图”行保留原始文件名 mmexport1693481234567.png 全文，可追溯来源",
       "实际读取附带图片，六个平台专用代码块与解析结果章节照常生成，命名规则不影响内容质量",
       "最终回复只报告实际 Markdown 文件路径，不重复打印完整 Prompt"
@@ -151,7 +151,7 @@
       "场景环境与明暗色彩维度标记变换，写明具体映射（雨丝→飘雪、湿反射→积雪、霓虹→暖黄路灯等），主体、构图与空间维度标记继承",
       "给出功能接替说明且成立：黄雨衣成为画面唯一高饱和暖色锚点，接替原霓虹的视觉重心功能",
       "Markdown 标题为“图片创意 Prompt”，“图片解析结果”之后有“创意方向”章节（方向、概念、继承/变换/放开、功能接替）",
-      "未指定保存位置时文件名为 .huzi-image-prompts/<名称基名>-creative-<方向标识>-prompts-YYYYMMDD-HHmmss-fff.md，图片副本命名规则不变",
+      "未指定保存位置时文件名为 .huzi-image2prompt/<名称基名>-creative-<方向标识>-prompts-YYYYMMDD-HHmmss-fff.md，图片副本命名规则不变",
       "六版中继承维度（黄雨衣男孩、下方中央位置、竖向 4:5、原始尺寸参考 800 × 1000）与参考图一致，无虚构",
       "六版中变换维度确实呈现雪夜而非雨夜；反义提示排除雨丝、湿反射、霓虹等“变回原样”的结果",
       "不输出通用、原版或自然语言 Prompt，只保留 GPT、Grok、Midjourney 平台专用版本",

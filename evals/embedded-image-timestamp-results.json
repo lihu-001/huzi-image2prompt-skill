@@ -7,8 +7,8 @@
   "historical_output_preserved": true,
   "outputs": [
     {
-      "markdown": ".huzi-image-prompts/原图-prompts-20260901-151103-160.md",
-      "asset": ".huzi-image-prompts/assets/原图-source-20260901-151103-160.png",
+      "markdown": ".huzi-image2prompt/原图-prompts-20260901-151103-160.md",
+      "asset": ".huzi-image2prompt/assets/原图-source-20260901-151103-160.png",
       "markdown_timestamped": true,
       "image_link_found": true,
       "relative_link": "assets/原图-source-20260901-151103-160.png",
@@ -20,8 +20,8 @@
       "source_copy_hash_matches": true
     },
     {
-      "markdown": ".huzi-image-prompts/原图-prompts-20260901-151103-160-001.md",
-      "asset": ".huzi-image-prompts/assets/原图-source-20260901-151103-160-001.png",
+      "markdown": ".huzi-image2prompt/原图-prompts-20260901-151103-160-001.md",
+      "asset": ".huzi-image2prompt/assets/原图-source-20260901-151103-160-001.png",
       "markdown_timestamped": true,
       "image_link_found": true,
       "relative_link": "assets/原图-source-20260901-151103-160-001.png",
@@ -34,5 +34,5 @@
     }
   ],
   "status": "PASS",
-  "output_contract_at_run": "current-six-block contract with .huzi-image-prompts as the default directory"
+  "output_contract_at_run": "current-six-block contract with .huzi-image2prompt as the default directory"
 }

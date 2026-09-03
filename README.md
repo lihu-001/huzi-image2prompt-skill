@@ -53,7 +53,7 @@ Claude Code: ~/.claude/skills/huzi-image2prompt/
 未指定保存位置时，每张图片生成一份独立 Markdown，并在同级 `assets/` 中保存原图副本：
 
 ```text
-.huzi-image-prompts/
+.huzi-image2prompt/
   <名称基名>-prompts-<YYYYMMDD-HHmmss-fff>.md
   assets/
     <名称基名>-source-<YYYYMMDD-HHmmss-fff>.<扩展名>
